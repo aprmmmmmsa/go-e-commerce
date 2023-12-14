@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"github/mtotheesa/go-e-commerce/config"
+	"github/mtotheesa/go-e-commerce/modules/servers"
 	"github/mtotheesa/go-e-commerce/pkg/databases"
 	"os"
 )
@@ -20,5 +20,5 @@ func main() {
 	db := databases.DbConnect(cfg.Db())
 	defer db.Close()
 
-	fmt.Println(db)
+	servers.NewServer(cfg, db).Start()
 }
